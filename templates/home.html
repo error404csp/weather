@@ -3,9 +3,6 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
-    <script src="../templates/imageMapster.js"></script>
     <title>Home Page</title>
 </head>
 <body>
@@ -28,34 +25,6 @@
         </div>
     </nav>
     <h1>Home Page</h1>
-    <div id="CaliMap"><img alt="California Map" src="../static/CaliMap.PNG" usemap="#Cali"/></div>
-    <div>
-        <map name="Cali">
-            <area href="#" shape="circle" coords="135,70,10" alt="Eureka" title="Eureka"/>
-            <area href="#" shape="circle" coords="210, 160, 10" alt="Sacramento" title="Sacramento"/>
-            <area href="#" shape="circle" coords="175, 185, 10" alt="San Francisco" title="San Francisco"/>
-            <area href="#" shape="circle" coords="305, 330, 10" alt="Los Angeles" title="Los Angeles"/>
-            <area href="#" shape="circle" coords="345, 380, 10" alt="San Diego" title="San Diego"/>
-        </map>
-    </div>
-    <script>
-        $('img').mapster({
-            singleSelect: true,
-            stroke : true,
-            strokeOpacity : 0.6,
-            strokeColor: 'ff0000',
-            fill : true,
-            fillOpacity : 0.6,
-            fillColor: 'ff0000',
-            //for some reason red color is not working yet
-            onMouseover: function(e) {
-                $(this).mapster('set',false).mapster('set',true);
-            },
-            onMouseout: function(e) {
-                $(this).mapster('set',false);
-            }
-        });
-    </script>
-    Currently you can click on Eureka, Sacramento, San Francisco, LA, and San Diego.
+
 </body>
 </html>
