@@ -9,5 +9,13 @@ app.config['DEBUG'] = True
 def home():
     return render_template("home.html")
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/weather')
+def recipes():
+    return render_template('weather.html')
+
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
