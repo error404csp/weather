@@ -14,7 +14,7 @@ def about():
     return render_template('about.html')
 
 @app.route('/weather')
-def recipes():
+def weather():
     return render_template('weather.html')
 
 if __name__ == "__main__":
