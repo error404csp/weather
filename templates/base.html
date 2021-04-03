@@ -200,6 +200,24 @@
             background:#ede1cf;
             transition:width .5s;
         }
+        
+                .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
     </style>
 </head>
@@ -215,6 +233,16 @@
         <a href="/weather">weather</a>
         <a href="https://github.com/error404csp/weather">repo</a>
         <a href="/about">about</a>
+        <div class="dropdown">
+            <span>mini labs</span>
+            <div class="dropdown-content">
+                <a href="/sophie-minilab">sophie</a>
+                <a href="/">kaila</a>
+                <a href="/">adam</a>
+                <a href="/">nolan</a>
+                <a href="/">ethan</a>
+            </div>
+        </div>
     </div>
 
 </div>
