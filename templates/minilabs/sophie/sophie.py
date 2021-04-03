@@ -1,14 +1,14 @@
 """Minilab """
 import random
 
-songlist1 = ["homemade dynamite by lorde", "pedestal by fergie", "basement by 99 neighbors", "perdus by angele", "our lady of sorrows by my chemical romance", "right and right again by sohodolls", "snakeskin by rina sawayama"]
+songlist1 = ["homemade dynamite by lorde", "pedestal by fergie", "basement by 99 neighbors", "perdus by angele", "our lady of sorrows by my chemical romance", "right and right again by sohodolls", "stfu! by rina sawayama", "酒後的心聲 by jody chiang", "biryani by ashwarya", "99 red balloons by nena", "masseduction by st. vincent", "runaway by rei ami", "nainainai by atarashii gakko!", "my hair is green by youra"]
 
 class Songs:
     """Initializer of class takes series parameter and returns Class Object"""
     def __init__(self, series):
         """Built in validation and exception"""
-        if series < 0 or series > 7:
-            raise ValueError("Series must be between 0 and 7")
+        if series < 0 or series > 15:
+            raise ValueError("Series must be between 0 and 15")
         self._series = series
         self._list = []
         self._dict = {}
