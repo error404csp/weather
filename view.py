@@ -17,5 +17,25 @@ def about():
 def weather():
     return render_template('weather.html')
 
+@minilab_bp.route('/kaila')
+def kaila():
+    return render_template("/minilabs/kaila.html")
+
+@minilab_bp.route('/adam')
+def adam():
+    return render_template("/minilabs/adam.html")
+
+@minilab_bp.route('/nolan')
+def nolan():
+    return render_template("/minilabs/nolan.html")
+
+@minilab_bp.route('/ethan')
+def ethan():
+    return render_template("/minilabs/ethan.html")
+
+@minilab_bp.route('/sophie')
+def sophie():
+    return render_template("/minilabs/sophie.html")
+
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
