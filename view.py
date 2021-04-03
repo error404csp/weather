@@ -17,23 +17,23 @@ def about():
 def weather():
     return render_template('weather.html')
 
-@minilab_bp.route('/kaila')
+@minilabs.route('/kaila')
 def kaila():
     return render_template("/minilabs/kaila.html")
 
-@minilab_bp.route('/adam')
+@minilabs.route('/adam')
 def adam():
     return render_template("/minilabs/adam.html")
 
-@minilab_bp.route('/nolan')
+@minilabs.route('/nolan')
 def nolan():
     return render_template("/minilabs/nolan.html")
 
-@minilab_bp.route('/ethan')
+@minilabs.route('/ethan')
 def ethan():
     return render_template("/minilabs/ethan.html")
 
-@minilab_bp.route('/sophie')
+@minilabs.route('/sophie')
 def sophie():
     return render_template("/minilabs/sophie.html")
 
