@@ -2,12 +2,23 @@
 {% extends "base.html" %}
 
 {% block title %}
-Sophie Minilab
+Sophie's Minilab
 {% endblock %}
 
 {% block content %}
 
 <body>
+
+<div style="padding:100px;">
+    <h3>Here are some {{songrecs.series}} song recs!</h3>
+
+    <table>
+        <tr>
+            <th>{{songrecs.series}} songs:</th>
+            <th>{{songrecs.list}}</th>
+        </tr>
+    </table>
+</div>
 
 </body>
 {% endblock %}

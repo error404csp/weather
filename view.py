@@ -17,5 +17,11 @@ def about():
 def weather():
     return render_template('weather.html')
 
+@app.route('/minilab-sophie')
+def minilabsophie():
+    n = 2
+    songrecs = Songs(n/n)
+    return render_template("/minilabs/minilab-sophie.html", songrecs=Songs(2))
+
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
