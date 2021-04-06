@@ -57,6 +57,8 @@ def minilab-sophie():
     return songrecs
 '''
 
+from flask import Flask, render_template
+
 # Tester Code
 if __name__ == "__main__":
     '''Value for testing'''
@@ -64,3 +66,9 @@ if __name__ == "__main__":
     '''Constructor of Class object'''
     songrecs = Songs(n/n)
     print(f"Here are some song recommendations = {songrecs.list}")
+
+@app.route('/minilab-sophie')
+def minilabsophie():
+    n = 2
+    songrecs = Songs(n/n)
+    return render_template("sophie.html", songrecs=Songs(2))
