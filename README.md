@@ -1,5 +1,6 @@
 # Weather App
 Welcome to error404csp! This is our repo for our upcoming weather website.
+
 Period 2 - Nolan D'Esopo, Kaila Manangan, Sophie Lee, Ethan Sun, Adam Holbel
 
 [Runtime Link](/)
