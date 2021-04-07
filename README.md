@@ -14,7 +14,11 @@ Our weather app will
 
 ### Minilabs
 ##### All minilabs are located in "templates". (links below for quick access)
-##### [Nolan D'Esopo](/) | ##### [Kaila Manangan](/) | ##### [Sophie Lee](/) | ##### [Ethan Sun](/) | ##### [Adam Holbel](/)
+##### [Nolan D'Esopo](/)
+##### [Kaila Manangan](/)
+##### [Sophie Lee](/)
+##### [Ethan Sun](/)
+##### [Adam Holbel](/)
 
 ## Main Features
 - displaying various cities' current weather and climate data
