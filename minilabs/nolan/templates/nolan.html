@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Nolan's Minilab
+{% endblock %}
+{% block content %}
+<body>
+<script>
+    $(document).ready(function() {
+        $('form').on('submit', function(event) {
+            $.ajax({
+                data : {
+                    initial: $('#initial').val(),
+                    goBack: $('#goBack').val(),
+                    nPass: $('#nPass').val()
+                },
+                type : 'POST',
+                url : '/nolan/minilabFunc'
+            })
+            .done(function(data) {
+                if (data.error) {
+                    $('#sequence').text(data.error).show();
+                } else {
+                    $('#sequence').text(data.sequence).show();
+                }
+            });
+            event.preventDefault();
+        });
+    });
+</script>
+<form style="border:1px solid #ccc">
+    <div class="container">
+        <label for="initial"><b>Initial Value:</b></label>
+        <input type="text" placeholder="Enter 1st # in sequence" id="initial" required>
+
+        <br><p>Enter how many consecutive numbers before the next number are summed to get the next number. For a Fibonnaci sequence, this is 2.</p>
+        <label for="goBack"><b>Consecutive Sum of:</b></label>
+        <input type="text" placeholder="2" value = "2" id="goBack" required>
+
+        <label for="nPass"><b>Sequence up to:</b></label>
+        <input type="text" placeholder="Enter the amount of numbers in the sequence you want" id="nPass" value="10" required>
+
+        <button type="submit">Find Sequence</button>
+        <br>
+        <br>
+        <div style="color:blue;font-size:large" id="sequence"></div>
+    </div>
+</form>
+</body>
+{% endblock %}

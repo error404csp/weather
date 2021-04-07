@@ -13,6 +13,3 @@ numbers.b = 10
 
 numbers.integral()
 numbers.derivative()
-
-if __name__ == "__main__":
-    a = 1
