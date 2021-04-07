@@ -1,9 +1,9 @@
 class math:
     def integral(numbers):
         a = (numbers.slope*numbers.b) - (numbers.slope*numbers.a)
-        print("Integral:" + a)
+        print("Integral:" + a.__str__())
     def derivative(numbers):
-        print("Derivative:" + numbers.slope*0)
+        print("Derivative:" + "0")
 
 # my class
 numbers = math()

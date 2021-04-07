@@ -7,4 +7,4 @@ nolan_bp = Blueprint(
     static_folder='static'
 )
 
-import nolan
+from minilabs.nolan import nolan

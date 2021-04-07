@@ -7,4 +7,4 @@ kaila_bp = Blueprint(
     static_folder='static'
 )
 
-import kaila
+from minilabs.kaila import kaila

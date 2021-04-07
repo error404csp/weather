@@ -7,4 +7,4 @@ ethan_bp = Blueprint(
     static_folder='static'
 )
 
-import ethan
+from minilabs.ethan import ethan
