@@ -12,8 +12,8 @@ Period 2 - Nolan D'Esopo, Kaila Manangan, Sophie Lee, Ethan Sun, Adam Holbel
 ## Project Summary
 Our weather app will 
 
-### Tri3 Minilab
-##### All minilabs are located in "templates".
+### Minilabs
+##### All minilabs are located in "templates". (links below for quick access)
 ##### [Nolan D'Esopo](/)
 ##### [Kaila Manangan](/)
 ##### [Sophie Lee](/)
