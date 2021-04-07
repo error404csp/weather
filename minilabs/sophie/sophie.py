@@ -1,3 +1,6 @@
+from flask import Flask, render_template, request
+from minilabs.sophie import sophie_bp
+
 import random
 
 songlist1 = ["homemade dynamite by lorde", "pedestal by fergie", "basement by 99 neighbors", "perdus by angele", "our lady of sorrows by my chemical romance", "right and right again by sohodolls", "stfu! by rina sawayama", "酒後的心聲 by jody chiang", "biryani by ashwarya", "99 red balloons by nena", "masseduction by st. vincent", "runaway by rei ami", "nainainai by atarashii gakko!", "my hair is green by youra"]
@@ -59,7 +62,7 @@ if __name__ == "__main__":
     songrecs = Songs(n/n)
     print(f"Here are some song recommendations = {songrecs.list}")
 
-@app.route('/minilab-sophie')
+@sophie_bp.route('/minilab-sophie')
 def minilabsophie():
     n = 2
     songrecs = Songs(n/n)

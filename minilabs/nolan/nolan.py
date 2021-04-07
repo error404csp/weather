@@ -1,20 +1,39 @@
-class Person:
-    def __init__(self,name,age,birthday,likes):
-        self.name = name
-        self.age = age
-        self.birthday = birthday
-        self.likes = likes
-    def showData(self):
-        return f"Hi, I'm {self.name}. I am {self.age} years old, and I was born on {self.birthday}. I like {self.likes}."
-    def ageFibonnaci(self, n):
-        fibSet = [0, self.age]
-        fibString = ""
-        for i in range(1,n):
-            fibSet.append(fibSet[i] + fibSet[i-1])
-            fibString += " " + str(fibSet[i])
-        return f"If you were to create a fibonnaci sequence starting with my age, the first {n} numbers would go like this:" + fibString
-Nolan = Person("Nolan D'Esopo", 18, "October 17, 2002", "playing guitar, riding my bike, listening to music, and playing video games")
-nPass = int(input("How many fibonnaci numbers do you want?"))
+from flask import Flask, render_template, request, jsonify
+from minilabs.nolan import nolan_bp
 
-print(Nolan.showData())
-print(Nolan.ageFibonnaci(nPass))
+class fibAndMore:
+    def __init__(self,initial,goBack, nPass):
+        self.initial = initial
+        self.goBack = goBack
+        self.nPass = nPass
+    def fibFinity(self):
+        fibSet = [self.initial]
+        for i in range(0,self.goBack):
+            fibSet.insert(0,0)
+        fibString = ""
+        for i in range(self.goBack,self.nPass+self.goBack-1):
+            fibAppendment = fibSet[i]
+            for j in range(1, self.goBack):
+                fibAppendment += fibSet[i - j]
+            fibSet.append(fibAppendment)
+        for i in range(self.goBack,len(fibSet)):
+            fibString += " " + str(fibSet[i])
+        return f"Starting with {self.initial}, going back {self.goBack} numbers from each consecutive number, the first {self.nPass} numbers in the sequence would go like this" + fibString
+
+app = Flask(__name__)
+
+@nolan_bp.route('/minilab')
+def minilab():
+    return render_template("nolan.html")
+
+@nolan_bp.route('/minilabFunc', methods=["POST"])
+def minilabFunc():
+    if request.method == "POST":
+        try:
+            initial = int(request.form["initial"])
+            goBack = int(request.form["goBack"])
+            nPass = int(request.form["nPass"])
+            gotem = fibAndMore(initial,goBack,nPass)
+            return jsonify({'sequence':gotem.fibFinity()})
+        except:
+            return jsonify({'error':'Enter Numbers.'})
