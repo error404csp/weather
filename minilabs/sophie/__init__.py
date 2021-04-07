@@ -7,4 +7,4 @@ sophie_bp = Blueprint(
     static_folder='static'
 )
 
-import sophie
+from minilabs.sophie import sophie

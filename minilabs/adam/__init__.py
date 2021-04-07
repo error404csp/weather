@@ -7,4 +7,4 @@ adam_bp = Blueprint(
     static_folder='static'
 )
 
-import adam
+from minilabs.adam import adam
