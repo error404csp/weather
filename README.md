@@ -10,7 +10,7 @@ Period 2 - Nolan D'Esopo, Kaila Manangan, Sophie Lee, Ethan Sun, Adam Holbel
 [Project Plan](https://docs.google.com/document/d/198r8o5Rhn9HF1gURlcYtmXif4h5XTN45CRm51yuZeDY/edit)
 
 ## Project Summary
-Our weather app will 
+/add description here/
 
 ### Minilabs
 ##### All minilabs are located in [templates](https://github.com/error404csp/weather/tree/main/minilabs). Check out the links below for quick access to each person's individual work.
