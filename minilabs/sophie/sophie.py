@@ -68,5 +68,5 @@ app = Flask(__name__)
 @sophie_bp.route('/minilab', methods=["GET", "POST"])
 def minilab():
     if request.form:
-        return render_template("minilab.html", even=Even(int(request.form.get("series"))))
-    return render_template("minilab.html", even=Even(2))
+        return render_template("sophie.html", even=Even(int(request.form.get("series"))))
+    return render_template("sophie.html", even=Even(2))
