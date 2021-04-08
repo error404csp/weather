@@ -6,6 +6,8 @@ class fibAndMore:
         self.initial = initial
         self.goBack = goBack
         self.nPass = nPass
+    def fibState(self):
+        return f"Starting with {self.initial}, going back {self.goBack} numbers from each consecutive number, the first {self.nPass} numbers in the sequence would go like this:"
     def fibFinity(self):
         fibSet = [self.initial]
         for i in range(0,self.goBack):
@@ -18,7 +20,7 @@ class fibAndMore:
             fibSet.append(fibAppendment)
         for i in range(self.goBack,len(fibSet)):
             fibString += " " + str(fibSet[i])
-        return f"Starting with {self.initial}, going back {self.goBack} numbers from each consecutive number, the first {self.nPass} numbers in the sequence would go like this" + fibString
+        return fibString
 
 app = Flask(__name__)
 
@@ -34,6 +36,6 @@ def minilabFunc():
             goBack = int(request.form["goBack"])
             nPass = int(request.form["nPass"])
             gotem = fibAndMore(initial,goBack,nPass)
-            return jsonify({'sequence':gotem.fibFinity()})
+            return jsonify({'statement':gotem.fibState(), 'sequence': gotem.fibFinity()})
         except:
-            return jsonify({'error':'Enter Numbers.'})
+            return jsonify({'error':'Enter integers in a digit form (1, 3, 4, etc).'})
