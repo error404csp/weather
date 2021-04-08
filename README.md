@@ -22,7 +22,7 @@ Our weather app will
 - [Class](https://github.com/error404csp/weather/blob/main/minilabs/sophie/sophie.py#L4-L18)
 - [Object](https://github.com/error404csp/weather/blob/b96a606cf4dfe0750eb5ce1b7b085647453d7402/minilabs/sophie/sophie.py#L10-L13)
 - [Display](https://github.com/error404csp/weather/blob/b96a606cf4dfe0750eb5ce1b7b085647453d7402/minilabs/sophie/sophie.py#L34-L49)
-- [html and formatting](https://github.com/error404csp/weather/blob/main/minilabs/sophie/templates/sophie.html)
+- [HTML & Formatting](https://github.com/error404csp/weather/blob/main/minilabs/sophie/templates/sophie.html)
 #### [Ethan Sun](/)
 #### [Adam Holbel](/)
 
