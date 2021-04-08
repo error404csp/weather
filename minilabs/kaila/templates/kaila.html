@@ -6,8 +6,14 @@ Kaila's Minilab
 {% endblock %}
 
 {% block content %}
-
-<body>
-
-</body>
+    <form method="POST" action="/kaila/kailaDataTwo" style="border:1px solid #ccc; max-width:50%;">
+        <div class="container">
+            <label for="kailaButton"><b>Press the button to get Kaila's data</b></label>
+            <button type="submit" id="kailaButton">Kaila's Button</button>
+            <br>
+                {{kailasData}}
+            <br>
+            <p style="color:purple;font-size:large" id="kailasData"></p>
+        </div>
+    </form>
 {% endblock %}
