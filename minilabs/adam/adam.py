@@ -50,6 +50,11 @@ def minilab-adam():
     return randomfact
 '''
 
+if __name__ == "main":
+    a = 2
+    randomfact = Facts(a/a)
+    print(f"Random Facts: = {randomfact.list}")
+
 @adam_bp.route('/minilab-adam')
 def minilabadam():
     a = 2
