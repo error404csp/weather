@@ -20,8 +20,12 @@ Nolan's Minilab
             })
             .done(function(data) {
                 if (data.error) {
-                    $('#sequence').text(data.error).show();
+                    $('#statement').css("color", "red");
+                    $('#statement').text(data.error).show();
+                    $('#sequence').hide();
                 } else {
+                    $('#statement').css("color", "blue");
+                    $('#statement').text(data.statement).show();
                     $('#sequence').text(data.sequence).show();
                 }
             });
@@ -29,7 +33,8 @@ Nolan's Minilab
         });
     });
 </script>
-<form style="border:1px solid #ccc">
+<img src="{{url_for('.static', filename='sequences.png')}}" alt="sequences.png" length="40%" width="40%" id="sequences" style="margin-right:100px;display:inline;float:right"/>
+<form style="border:1px solid #ccc; max-width:50%;">
     <div class="container">
         <label for="initial"><b>Initial Value:</b></label>
         <input type="text" placeholder="Enter 1st # in sequence" id="initial" required>
@@ -44,8 +49,10 @@ Nolan's Minilab
         <button type="submit">Find Sequence</button>
         <br>
         <br>
-        <div style="color:blue;font-size:large" id="sequence"></div>
+        <div style="color:blue;font-size:large" id="statement"></div>
+        <br><div style="color:blue;font-size:large" id="sequence"></div>
     </div>
 </form>
+<p>If you choose a very high consecutive sum, it will just look like every previous number in the sequence is being added together to get the next. You will have to read through the same number of terms as the consecutive sum you chose to see where that stops.</p>
 </body>
 {% endblock %}
