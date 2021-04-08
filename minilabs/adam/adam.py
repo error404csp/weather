@@ -1,12 +1,12 @@
 from minilabs.adam import adam_bp
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 import random
 
 factlist = ["Fungi known as Ophiocordyceps, infects ants' central nervous system and turns them into zombie-like creatures","Armadillo shells are bulletproof","The longest english word is 189,819 letters long","The Eiffel Tower can grow 6+ inches during the summer due to the heat"]
 
 class Facts:
-    def init(self, series):
+    def __init__(self, series):
         if series < 0 or series > 5:
             raise ValueError("Series must be between 0 and 5")
         self._series = series
@@ -43,20 +43,11 @@ class Facts:
     def get_sequence(self, nth):
         return self._dict[nth]
 
-'''
-def minilab-adam():
-    a = 2
-    randomfact = Facts(a/a)
-    return randomfact
-'''
-
-if __name__ == "main":
-    a = 2
-    randomfact = Facts(a/a)
-    print(f"Random Facts: = {randomfact.list}")
-
-@adam_bp.route('/minilab-adam')
+@adam_bp.route('/minilab', methods=['GET','POST'])
 def minilabadam():
-    a = 2
-    randomfact = Facts(a/a)
-    return render_template("adam.html", randomfact=Facts(2))
+    if request.method == "POST":
+        a = int(request.form["series"])
+        randomfact = Facts(a)
+        randomfact.fact_series()
+        return render_template("adam.html", data=randomfact.get_sequence(a))
+    return render_template("adam.html", data="")
