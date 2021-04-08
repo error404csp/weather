@@ -6,8 +6,14 @@ Ethan's Minilab
 {% endblock %}
 
 {% block content %}
-
-<body>
-
-</body>
+<form method="POST" action="/kaila/kailaDataTwo" style="border:1px solid #ccc; max-width:50%;">
+    <div class="container">
+        <b>Calculus functions with the equation of 5x^5</b></label>
+        <br>
+        Integral of x=5 from 5 to 10: {{integral}}
+        Derivative of x=5: {{derivative}}
+        <br>
+        <p style="color:purple;font-size:large" id="kailasData"></p>
+    </div>
+</form>
 {% endblock %}
