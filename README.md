@@ -13,7 +13,7 @@ Period 2 - Nolan D'Esopo, Kaila Manangan, Sophie Lee, Ethan Sun, Adam Holbel
 Our weather app will 
 
 ### Minilabs
-##### All minilabs are located in [templates](https://github.com/error404csp/weather/tree/main/minilabs). check out the links below for quick access to each person's individual work.
+##### All minilabs are located in [templates](https://github.com/error404csp/weather/tree/main/minilabs). Check out the links below for quick access to each person's individual work.
 #### [Nolan D'Esopo](/)
 #### [Kaila Manangan](/)
 #### [Sophie Lee](https://github.com/error404csp/weather/blob/main/minilabs/sophie/sophie.py)
