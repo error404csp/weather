@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Kaila's Minilab
+{% endblock %}
+
+{% block content %}
+<h1 style="font-family:verdana;" >Bubble sort</h1>
+<p>Enter a sequence of numbers each separated by a space. This function will sort what every assortment of numbers you put into the input box</p>
+<form action="/ethan2/ethan2BubbleTwo" method="post" style="background-color:powderblue;padding:20px;">
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+            </div>
+            <div class="login-form">
+                <div class="control-group">
+                    <input class="login-field" name="numbers" placeholder="put numbers here" type="text" value="">
+                </div>
+                <div class="control-group">
+                <div class="col-1">
+                    <input style= "color:white" class="btn btn-primary btn-large btn-block" type="submit" value="Submit">
+                </div>
+            </div>
+            <div class="row" style="font:bold;">
+                <div class="col-1">Here is your list sorted:</div>
+            </div>
+
+            {% for i in ethan2Data %}
+            <div class="row">
+                <div class="col-1">{{i}}, </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</form>
+
+{% endblock %}
