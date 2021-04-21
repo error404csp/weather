@@ -52,7 +52,8 @@ Nolan's Minilab
             $.ajax({
                 data: {
                     dataToSort: $('#dataToSort').val(),
-                    chuckeecheese: $('#chuckeecheese').prop("checked")
+                    chuckeecheese: $('#chuckeecheese').prop("checked"),
+                    booblchecked: $('#booblchecked').prop("checked")
                 },
                 type : 'POST',
                 url : '/nolan/bubbleSort'
@@ -63,7 +64,7 @@ Nolan's Minilab
                     $('#sortedData').text(data.error).show();
                 } else {
                     $('#sortedData').css("color","blue");
-                    $('#sortedData').text(data.sortedData).show();
+                    $('#sortedData').html(data.sortedData).show();
                 }
             });
             event.preventDefault();
@@ -97,13 +98,14 @@ Nolan's Minilab
 <form id="minilab2" style="border:1px solid #ccc; max-width:50%;">
     <div class="container">
         <label for="dataToSort"><b>Data to Sort:</b></label>
-        <input type="text" placeholder="ex: 1,5,8,3,6,2" id="dataToSort" required>
+        <input type="text" placeholder="ex: 1,5,8,3,6,2" id="dataToSort" required><label>**Defaults to select sort</label>
         <br><p>Enter characters, integers, or strings separated by spaces and/or commas. Including more than one character will sort through the list as words.</p>
         <input type="checkbox" id="chuckeecheese" name="chuckeecheese"><label for="chuckeecheese">Sort each word
         into alphabetical order as well</label>
         <button type="submit">Sort</button>
+        <input type="checkbox" id="booblchecked" name="booblchecked"><label for="booblchecked">True Bubble Sort</label>
         <br>
-        <div class="spacey" id="sortedData"></div>
+        <div class="spacey" style="white-space: pre-line" id="sortedData"></div>
     </div>
 </form>
 </body>
