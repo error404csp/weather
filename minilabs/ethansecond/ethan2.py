@@ -7,18 +7,12 @@ class ethanbubble:
     def bubble(self):
         list = self.jesus
         for i in range(len(list) - 1):
-            for j in range(len(list) - 1):
+            for j in range(len(list) - 1): 
                 if int(str(list[j])) > int(str(list[j+1])):
-                    print("switch:")
-                    print(list[j])
-                    print(list[j+1])
 
                     k = list[j+1] #switches [j] and [j+1]
                     list[j+1] = list[j]
                     list[j] = k
-
-                    print(list)
-            print("-----")
         return list
 
 
