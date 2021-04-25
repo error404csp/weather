@@ -5,12 +5,14 @@ app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 
 from minilabs.adam import adam_bp
-from minilabs.ethan import ethan_bp
+#from minilabs.ethan import ethan_bp WIP
+from minilabs.ethansecond import ethan2_bp
 from minilabs.kaila import kaila_bp
 from minilabs.nolan import nolan_bp
 from minilabs.sophie import sophie_bp
 app.register_blueprint(adam_bp, url_prefix='/adam')
-app.register_blueprint(ethan_bp, url_prefix='/ethan')
+#app.register_blueprint(ethan_bp, url_prefix='/ethan') WIP
+app.register_blueprint(ethan2_bp, url_prefix='/ethan2')
 app.register_blueprint(kaila_bp, url_prefix='/kaila')
 app.register_blueprint(nolan_bp, url_prefix='/nolan')
 app.register_blueprint(sophie_bp, url_prefix='/sophie')

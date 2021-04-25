@@ -28,7 +28,7 @@ def selectionSort(string,dumb):
     listedData = listedData.split(",")
     listedData = [i for i in listedData if i != "," and i != ""]
 
-    #bubble sort
+    #selection sort
     def sortVal(values):
         for i in range(len(values)):
             min_i = i
@@ -57,13 +57,7 @@ def selectionSort(string,dumb):
             except ValueError:
                 pass
 
-        #sort characters
-        if all(len(s) == 1 for s in listedData):
-            sortedCharacters = sortVal(listedData)
-            stringList = ", ".join(sortedCharacters)
-            return stringList
-
-        #sort words into alphabetical order
+        #sort words/characters into alphabetical order
         listedData = sortVal(listedData)
 
         #sort each word into alphabetical order (depends on checkbox)
@@ -77,6 +71,61 @@ def selectionSort(string,dumb):
 
         #no early return --> returns words
         return stringList
+
+import math
+def bubbleSort(string,dumb):
+    #split list by comma into integers, characters, or strings
+    listedData = string.replace(" ",",")
+    listedData = listedData.split(",")
+    listedData = [i for i in listedData if i != "," and i != ""]
+
+    #bubble sort
+    def booble(values):
+        iterationStrings = " ".join(values)
+        iterations, unswapped = len(values), 0
+        while iterations > 1 and unswapped < iterations - 1:
+            unswapped = 0
+            for i in range(0,iterations-1):
+                if values[i+1] < values[i]:
+                    values[i+1], values[i] = values[i], values[i+1]
+                    unswapped -= 1
+                unswapped += 1
+            iterations -= 1
+            iterationStrings += "<br/>" + " ".join(values)
+
+        return iterationStrings
+
+        #assume list is integers, try sorting integers
+    try:
+        #turn strings of integers into integers
+        listedData = [int(n) for n in listedData]
+        #sort integers
+        listedData = booble(listedData)
+    except:
+        #rule out mix of data types
+        for i in listedData:
+            try:
+                if int(i):
+                    raise TypeError
+            except ValueError:
+                pass
+
+        #sort words/characters into alphabetical order
+        listedData = booble(listedData)
+
+        #sort each word into alphabetical order (depends on checkbox)
+        if dumb == "true":
+            listedData = listedData.split("<br/>")
+            listedData = listedData[-1].split(" ")
+            print(listedData)
+            for i in range(len(listedData)):
+                bruh = "<br/>" + "-------------"
+                bruh += booble(list(listedData[i]))
+                listedData[i] = bruh
+            listedData = "<br/>".join(listedData)
+
+    return listedData
+
 
 app = Flask(__name__)
 
@@ -97,12 +146,17 @@ def fibGetter():
             return jsonify({'error':'Enter integers in a digit form (1, 3, 4, etc).'})
 
 @nolan_bp.route('/bubbleSort', methods=['POST'])
-def bubbleSort():
+def bruhble():
     if request.method == "POST":
         try:
             dataToSort = request.form["dataToSort"].lower()
             checked = request.form.get("chuckeecheese")
-            sortedList = selectionSort(dataToSort,checked)
+            booblchecked = request.form.get("booblchecked")
+            print(booblchecked)
+            if booblchecked == "true":
+                sortedList = bubbleSort(dataToSort,checked)
+            else:
+                sortedList = selectionSort(dataToSort,checked)
             return jsonify({'sortedData':sortedList})
         except:
             return jsonify({'error':"Make sure the data is all the same type and doesn't have any weird characters fucking it up."})
