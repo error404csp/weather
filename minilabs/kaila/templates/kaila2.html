@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Kaila's Bubblesort
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="/kaila/kailaData2" style="border:1px solid #ccc; max-width:50%;">
+        <div class="container">
+            <br>
+                {{bubble2}}
+            <br>
+            <p style="color:purple;font-size:large" id="kailasData"></p>
+        </div>
+    </form>
+{% endblock %}
