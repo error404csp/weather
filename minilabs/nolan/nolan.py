@@ -23,7 +23,7 @@ class fibAndMore:
         return fibString
 
 def selectionSort(string,dumb):
-    #split list by comma into integers, characters, or strings
+    #split list by commas or spaces
     listedData = string.replace(" ",",")
     listedData = listedData.split(",")
     listedData = [i for i in listedData if i != "," and i != ""]
@@ -74,7 +74,7 @@ def selectionSort(string,dumb):
 
 import math
 def bubbleSort(string,dumb):
-    #split list by comma into integers, characters, or strings
+    #split list by commas or spaces
     listedData = string.replace(" ",",")
     listedData = listedData.split(",")
     listedData = [i for i in listedData if i != "," and i != ""]
@@ -152,11 +152,10 @@ def bruhble():
             dataToSort = request.form["dataToSort"].lower()
             checked = request.form.get("chuckeecheese")
             booblchecked = request.form.get("booblchecked")
-            print(booblchecked)
             if booblchecked == "true":
                 sortedList = bubbleSort(dataToSort,checked)
             else:
                 sortedList = selectionSort(dataToSort,checked)
             return jsonify({'sortedData':sortedList})
         except:
-            return jsonify({'error':"Make sure the data is all the same type and doesn't have any weird characters fucking it up."})
+            return jsonify({'error':"Make sure the data is all the same type."})

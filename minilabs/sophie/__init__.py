@@ -8,3 +8,4 @@ sophie_bp = Blueprint(
 )
 
 from minilabs.sophie import sophie
+from minilabs.sophie import bubble

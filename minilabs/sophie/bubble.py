@@ -11,24 +11,19 @@ def bubblesort(list):
             if list[a] > list[a + 1]:
                 sorted = False
                 list[a], list[a + 1] = list[a + 1], list[a]
+
     return list
-
-sortedlist = bubblesort([2, 4, 6, 5, 3, 2, 7, 6, 9, 22, 6])
-
-print(sortedlist)
 
 app = Flask(__name__)
 
 @sophie_bp.route('/bubble', methods=["GET", "POST"])
-def bubblesort():
+def bubblesortProc():
     if request.method == 'POST':
         first = int(request.form['first'])
         second = int(request.form['second'])
         third = int(request.form['third'])
         fourth = int(request.form['fourth'])
         fifth = int(request.form['fifth'])
-        numberlist = [first, second, third, fourth, fifth]
-        list = [first, second, third, fourth, fifth]
-        sortedlist = bubblesort(numberlist)
-        return render_template("sophie.html", first=first, second=second, third=third, fourth=fourth, fifth=fifth,  list=list, sortedlist=sortedlist, numberlist=numberlist)
-    return render_template("sophie.html")
+        sortedList = bubblesort([first, second, third, fourth, fifth])
+        return render_template("bubble.html", sortedlist=sortedList, numberlist=[first, second, third, fourth, fifth])
+    return render_template("bubble.html")
