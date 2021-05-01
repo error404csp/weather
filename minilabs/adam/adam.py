@@ -51,3 +51,5 @@ def minilabadam():
         randomfact.fact_series()
         return render_template("adam.html", data=randomfact.get_sequence(a))
     return render_template("adam.html", data="")
+
+
