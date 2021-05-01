@@ -1,7 +1,9 @@
 from minilabs.adam import adam_bp
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Blueprint
 
 import random
+import logging
+
 
 factlist = ["Fungi known as Ophiocordyceps, infects ants' central nervous system and turns them into zombie-like creatures","Armadillo shells are bulletproof","The longest english word is 189,819 letters long","The Eiffel Tower can grow 6+ inches during the summer due to the heat"]
 
@@ -51,5 +53,35 @@ def minilabadam():
         randomfact.fact_series()
         return render_template("adam.html", data=randomfact.get_sequence(a))
     return render_template("adam.html", data="")
+
+
+
+
+
+def bubblesort(Nothing, i):
+    if int(Nothing[i])>int(Nothing[i+1]):
+        value=Nothing[i]
+        Nothing[i]=Nothing[i+1]
+        Nothing[i+1]=value
+
+
+
+
+@adam_bp.route('/BubbleSort', methods=['GET','POST'])
+def something():
+    if request.method == "POST":
+        a = (request.form["numbers"])
+        # results = sort(a)
+        sortnumber=a
+        #logging.log(sortnumber)
+        numbers = sortnumber.split(' ')
+        for j in range (0,len(numbers)-1):
+            for i in range (0, len(numbers)-1):
+                bubblesort(numbers, i)
+        return render_template("adam.html", databubblesort=numbers)
+    return render_template("adam.html", databubblesort="")
+
+
+
 
 

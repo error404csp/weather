@@ -1,4 +1,5 @@
-from flask import Blueprint
+from flask import Blueprint, Flask
+# from adam import adam_bp
 
 adam_bp = Blueprint(
     'adam_bp',

@@ -24,12 +24,30 @@ Adam's Minilab
                 <h3>Type a number from 0 to 5</h3>
                 <form action="/adam/minilab" method="POST" >
                     <input id="series" name="series" type="number" min="0" max="5" >
-                    <button>Go!</button>
+                    <button>Give me a random fact!</button>
                 </form>
             </div>
 
             <div class="col-md-6">
                 <h3>{{data}}</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="center-block" style="margin: 2% 5% 5%;">
+        <div class="jumbotron text-center row">
+            <div class="col-md-6">
+                <h3>Type A List Of Numbers</h3>
+                <form action="/adam/BubbleSort" method="POST" >
+                    <input id="numbers" name="numbers" >
+                    <button>Sort!</button>
+                </form>
+
+            </div>
+
+            <div class="col-md-6">
+                <h3>{{databubblesort}}</h3>
             </div>
         </div>
 
