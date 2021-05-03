@@ -9,7 +9,7 @@ Sophie's Bubble Sort
 
 <br>
 <h1 class="title"><i>Bubble Sort</i></h1>
-<h2 class="sub-title">enter some numbers</h2>
+<h2 class="sub-title">algorithm to sort five numbers from lowest to greatest</h2>
 <br>
 
 <form method="POST" ID="bubblesort" action="/sophie/bubble">
@@ -18,12 +18,12 @@ Sophie's Bubble Sort
     <input id="third" name="third" class="input" placeholder="third number" type="number" required="required">
     <input id="fourth" name="fourth" class="input" placeholder="fourth number" type="number" required="required">
     <input id="fifth" name="fifth" class="input" placeholder="fifth number" type="number" required="required">
-    <button class="button"><span>Sort</span></button>
+    <button class="button"><span>sort</span></button>
 </form>
 
 <br>
-<h4 class="display">Unsorted:: {{numberlist}}</h4>
-<h4 class="display">Sorted: {{sortedlist}}</h4>
+<h4 class="display">unsorted list: {{numberlist}}</h4>
+<h4 class="display">sorted list: {{sortedlist}}</h4>
 <br>
 
 {% endblock %}
