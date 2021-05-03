@@ -30,6 +30,10 @@ def about():
 def weather():
     return render_template('weather.html')
 
+@app.route('/minilabs')
+def minilabs():
+    return render_template('minilabs.html')
+
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
 
