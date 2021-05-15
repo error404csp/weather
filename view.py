@@ -26,6 +26,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/weather')
 def weather():
     return render_template('weather.html')
