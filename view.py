@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request, session, flash
 
 app = Flask(__name__, template_folder="templates")
 app.config['ENV'] = 'development'
@@ -28,9 +28,14 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/login')
+@app.route('/login', methods=["POST", "GET"])
 def login():
-    return render_template('login.html')
+    if request.method == "POST":
+        user = request.form['Username1']
+        passw = request.form['Password1']
+        return render_template('weather.html', Username1=user, Password1=passw)
+    else:
+        return render_template('login.html')
 
 @app.route('/weather')
 def weather():
