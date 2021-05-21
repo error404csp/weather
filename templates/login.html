@@ -25,6 +25,9 @@ Login Page
 
 <!--    </div>-->
 
+
+
+
 <div class="wrapper" data-masonry='{ "itemSelector": ".card", "columnWidth": 160 }'>
 
     <div class="card">
@@ -35,17 +38,66 @@ Login Page
 
                 <div class="col-md-6">
 
-                    <span class="card-name">Login (still a wip)</span>
+                    <span class="card-name">Login</span>
 
                     <div class="card-content">
 
-                        Username
-                        <form action="/Login" method="POST" >
-                            <input id="login" name="login" >
+                        <p>Username</p>
+                        <form action="/login" method="POST" >
+                            <input
+                                    id="Username1"
+                                    name="Username1"
+                                    placeholder="Enter Username"
+                            >
+
+                        <p>Password<p>
+                            <input
+                                    id="Password1"
+                                    name="Password1"
+                                    placeholder="Enter Password"
+                                    >
+                            <p><button type="submit" class = "btn btn-primary" >Confirm</button>
                         </form>
-                        Password
-                        <form action="/Login" method="POST" >
-                            <input id="login" name="login" >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="card">
+
+        <div class="center-block" style="margin: 2% 5% 5%;">
+
+            <div class="jumbotron text-center row">
+
+                <div class="col-md-6">
+
+                    <span class="card-name">Sign up</span>
+
+                    <div class="card-content">
+
+                        <p>Username</p>
+                        <form action="/User" method="POST" >
+                            <input
+                                    id="Username2"
+                                    name="Username2"
+                                    placeholder="Enter Username"
+                            >
+                        <p>Password</p>
+                            <input
+                                    id="Password2"
+                                    name="Password2"
+                                    placeholder="Enter Password"
+                            >
+                            <p></p><button class = "button button1" formaction = "/User/login">Confirm</button>
                         </form>
 
                     </div>
