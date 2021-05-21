@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block content %}
+<body>
+<style>
+    table, td, th {
+        border: 1px solid blue;
+    }
+    td, th {
+        text-align:left;
+    }
+</style>
+
+<!--<div class="container">-->
+<!--   -->
+<!--            <div class="col-md-6">-->
+<!--                <h3>{{data}}</h3>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+
+
+
+<div class="wrapper" data-masonry='{ "itemSelector": ".card", "columnWidth": 160 }'>
+
+    <div class="card">
+
+        <div class="center-block" style="margin: 2% 5% 5%;">
+
+            <div class="jumbotron text-center row">
+
+                <div class="col-md-6">
+
+                    <span class="card-name">Login</span>
+
+                    <div class="card-content">
+
+                        <p>Username</p>
+                        <form action="/login" method="POST" >
+                            <input
+                                    id="Username1"
+                                    type="text"
+                                    name="Username1"
+                                    placeholder="Enter Username"
+                            >
+
+                        <p>Password<p>
+                            <input
+                                    id="Password1"
+                                    type="text"
+                                    name="Password1"
+                                    placeholder="Enter Password"
+                                    >
+                            <p><button type="submit" class = "btn btn-primary" >Confirm</button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="card">
+
+        <div class="center-block" style="margin: 2% 5% 5%;">
+
+            <div class="jumbotron text-center row">
+
+                <div class="col-md-6">
+
+                    <span class="card-name">Sign up</span>
+
+                    <div class="card-content">
+
+                        <p>Username</p>
+                        <form action="/User" method="POST" >
+                            <input
+                                    id="Username2"
+                                    name="Username2"
+                                    placeholder="Enter Username"
+                            >
+                        <p>Password</p>
+                            <input
+                                    id="Password2"
+                                    name="Password2"
+                                    placeholder="Enter Password"
+                            >
+                            <p></p><button class = "button button1" formaction = "/User/login">Confirm</button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+{% endblock %}

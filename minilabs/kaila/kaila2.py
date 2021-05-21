@@ -13,7 +13,7 @@ sort(nums)
 
 bubble = print(nums)
 
-##@kaila_bp.route('/kailaData2', methods=['POST'])
-##def numbers():
-    ##if request.method == "POST":
-        ##return render_template("kaila2.html", bubble2=bubble)
+@kaila_bp.route('/kailaData2', methods=['POST'])
+def numbers():
+    if request.method == "POST":
+        return render_template("kaila2.html", bubble2=bubble)
