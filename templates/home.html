@@ -165,14 +165,8 @@ Home
 <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
 <script src="{{url_for('static', filename='imageMapster.js')}}"></script>
 
-<div class="container" style="position:absolute;left:600px;top:300px;width:400px;height:250px;font-size:30px;color:black">
-    <div id="SelectedCity"></div><br/>
-    <div id="SelectedCityTemp"></div><br/>
-    <div id="SelectedCitySunny"></div>
-</div>
-
-<div ><img id="CaliMap" alt="California Map" src="../static/CaliMap.PNG" usemap="#California"/></div>
-<div>
+<div style="position:absolute;left:775px;top:930px">
+    <div><img id="CaliMap" alt="California Map" src="../static/CaliMap.PNG" usemap="#California"/></div>
     <map name="California">
         <area shape="circle" coords="135,70,10" alt="Eureka" title="Eureka" href="#"/>
         <area shape="circle" coords="185,80,10" alt="Redding" title="Redding" href="#"/>
@@ -198,9 +192,14 @@ Home
         <area shape="circle" coords="335, 360, 10" alt="Oceanside" title="Oceanside" href="#"/>
         <area shape="circle" coords="345, 360, 10" alt="Escondido" title="Escondido" href="#"/>
         <area shape="circle" coords="345, 380, 10" alt="San Diego" title="San Diego" href="#"/>
-
     </map>
+    <div class="container" style="position:relative;left:575px;bottom:300px;width:200px;height:250px;font-size:30px;color:black">
+        <div id="SelectedCity"></div><br/>
+        <div id="SelectedCityTemp"></div><br/>
+        <div id="SelectedCitySunny"></div>
+    </div>
 </div>
+
 <script>
     var hoverProperties = {
         fill : true,
@@ -225,16 +224,19 @@ Home
         },
         onClick: function() {
             $("#SelectedCity").text($(this).mapster('highlight')[0].alt).show();
-            $("#SelectedCityTemp").text(Math.round((Math.random()*70+120)/2)).show();
-            var sunny = Math.random()
-            if (sunny > 0.5) sunny = "sunny";
-            else if (sunny < 0.1) sunny = "rainy";
+            temperature = Math.round((Math.random()*70+120)/2 + Math.random()*10 - Math.random()*10)
+            sunny = Math.random()
+            if (sunny > 0.7 || temperature > 80) sunny = "sunny";
+            else if (sunny < 0.1) {
+                sunny = "rainy";
+                temperature -= 10
+            }
             else sunny = "cloudy";
+            $("#SelectedCityTemp").text(temperature).show();
             $("#SelectedCitySunny").text(sunny).show();
         }
     });
 </script>
-Currently you can click on ANY CITY NAMED ON THIS CALIFORNIA MAP.
 
 </body>
 {% endblock %}
