@@ -80,82 +80,70 @@ Home
         <span class="card-name">Minilabs (links not working rn)</span>
         <div class="card-content">
 
-            <div class="flip-card">
+            {% for card in
+                [{"animal":"fas fa-cat","person":"Kaila"},
+                {"animal":"fas fa-dog","person":"Nolan"},
+                {"animal":"fas fa-dove","person":"Adam"},
+                {"animal":"fas fa-frog","person":"Sophie"},
+                {"animal":"fas fa-fish","person":"Ethan"}]
+            %}
+
+            <div class="flip-card" onclick="goToLab(`{{card.get('person')}}`)">
                 <div class="flip-card-inner">
 
                     <div class="flip-card-front">
-                        <i class="fas fa-cat"></i>
+                        <i class='{{card.get("animal")}}'></i>
                     </div>
 
                     <div class="flip-card-back">
-                        Kaila's Minilabs
+                        {{card.get("person")}}'s Minilabs
                     </div>
 
                 </div>
             </div>
 
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-                        <i class="fas fa-dog"></i>
-                    </div>
-
-                    <div class="flip-card-back">
-                        Nolan's Minilabs
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-                        <i class="fas fa-dove"></i>
-                    </div>
-
-                    <div class="flip-card-back">
-                        Adam's Minilabs
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-                        <i class="fas fa-frog"></i>
-                    </div>
-
-                    <div class="flip-card-back">
-                        Sophie's Minilabs
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-                        <i class="fas fa-fish"></i>
-                    </div>
-
-                    <div class="flip-card-back">
-                        Ethan's Minilabs
-                    </div>
-
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </div>
+
+    <div class="card">
+        <div><img id="CaliMap" alt="California Map" src="../static/CaliMap.PNG" usemap="#California"/></div>
+        <map name="California">
+            <area shape="circle" coords="135,70,10" alt="Eureka" title="Eureka" href="#"/>
+            <area shape="circle" coords="185,80,10" alt="Redding" title="Redding" href="#"/>
+            <area shape="circle" coords="200,115,10" alt="Chico" title="Chico" href="#"/>
+            <area shape="circle" coords="210, 160, 10" alt="Sacramento" title="Sacramento" href="#"/>
+            <area shape="circle" coords="170, 165, 10" alt="Santa Rosa" title="Santa Rosa" href="#"/>
+            <area shape="circle" coords="185, 185, 10" alt="Oakland" title="Oakland" href="#"/>
+            <area shape="circle" coords="175, 185, 10" alt="San Francisco" title="San Francisco" href="#"/>
+            <area shape="circle" coords="195, 200, 10" alt="San Jose" title="San Jose" href="#"/>
+            <area shape="circle" coords="200, 225, 10" alt="Salinas" title="Salinas" href="#"/>
+            <area shape="circle" coords="260, 230, 10" alt="Fresno" title="Fresno" href="#"/>
+            <area shape="circle" coords="193, 230, 10" alt="Monterey" title="Monterey" href="#"/>
+            <area shape="circle" coords="230, 280, 10" alt="San Luis Obispo" title="San Luis Obispo" href="#"/>
+            <area shape="circle" coords="283, 283, 10" alt="Bakersfield" title="Bakersfield" href="#"/>
+            <area shape="circle" coords="233, 295, 10" alt="Santa Maria" title="Santa Maria" href="#"/>
+            <area shape="circle" coords="260, 315, 10" alt="Santa Barbara" title="Santa Barbara" href="#"/>
+            <area shape="circle" coords="335, 320, 10" alt="San Bernadino" title="San Bernadino" href="#"/>
+            <area shape="circle" coords="305, 330, 10" alt="Los Angeles" title="Los Angeles" href="#"/>
+            <area shape="circle" coords="322, 335, 10" alt="Anaheim" title="Anaheim" href="#"/>
+            <area shape="circle" coords="310, 340, 10" alt="Long Beach" title="Long Beach" href="#"/>
+            <area shape="circle" coords="362, 340, 10" alt="Palm Springs" title="Palm Springs" href="#"/>
+            <area shape="circle" coords="325, 344, 10" alt="Santa Ana" title="Santa Ana" href="#"/>
+            <area shape="circle" coords="335, 360, 10" alt="Oceanside" title="Oceanside" href="#"/>
+            <area shape="circle" coords="345, 360, 10" alt="Escondido" title="Escondido" href="#"/>
+            <area shape="circle" coords="345, 380, 10" alt="San Diego" title="San Diego" href="#"/>
+        </map>
+
+    </div>
+
+    <div class="card" style="width:200px;height:250px;font-size:30px;color:black">
+        <div id="SelectedCity"></div><br/>
+        <div id="SelectedCityTemp"></div><br/>
+        <div id="SelectedCitySunny"></div>
+    </div>
+
 
 </div>
         
@@ -164,41 +152,6 @@ Home
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
 <script src="{{url_for('static', filename='imageMapster.js')}}"></script>
-
-<div style="position:absolute;left:775px;top:930px">
-    <div><img id="CaliMap" alt="California Map" src="../static/CaliMap.PNG" usemap="#California"/></div>
-    <map name="California">
-        <area shape="circle" coords="135,70,10" alt="Eureka" title="Eureka" href="#"/>
-        <area shape="circle" coords="185,80,10" alt="Redding" title="Redding" href="#"/>
-        <area shape="circle" coords="200,115,10" alt="Chico" title="Chico" href="#"/>
-        <area shape="circle" coords="210, 160, 10" alt="Sacramento" title="Sacramento" href="#"/>
-        <area shape="circle" coords="170, 165, 10" alt="Santa Rosa" title="Santa Rosa" href="#"/>
-        <area shape="circle" coords="185, 185, 10" alt="Oakland" title="Oakland" href="#"/>
-        <area shape="circle" coords="175, 185, 10" alt="San Francisco" title="San Francisco" href="#"/>
-        <area shape="circle" coords="195, 200, 10" alt="San Jose" title="San Jose" href="#"/>
-        <area shape="circle" coords="200, 225, 10" alt="Salinas" title="Salinas" href="#"/>
-        <area shape="circle" coords="260, 230, 10" alt="Fresno" title="Fresno" href="#"/>
-        <area shape="circle" coords="193, 230, 10" alt="Monterey" title="Monterey" href="#"/>
-        <area shape="circle" coords="230, 280, 10" alt="San Luis Obispo" title="San Luis Obispo" href="#"/>
-        <area shape="circle" coords="283, 283, 10" alt="Bakersfield" title="Bakersfield" href="#"/>
-        <area shape="circle" coords="233, 295, 10" alt="Santa Maria" title="Santa Maria" href="#"/>
-        <area shape="circle" coords="260, 315, 10" alt="Santa Barbara" title="Santa Barbara" href="#"/>
-        <area shape="circle" coords="335, 320, 10" alt="San Bernadino" title="San Bernadino" href="#"/>
-        <area shape="circle" coords="305, 330, 10" alt="Los Angeles" title="Los Angeles" href="#"/>
-        <area shape="circle" coords="322, 335, 10" alt="Anaheim" title="Anaheim" href="#"/>
-        <area shape="circle" coords="310, 340, 10" alt="Long Beach" title="Long Beach" href="#"/>
-        <area shape="circle" coords="362, 340, 10" alt="Palm Springs" title="Palm Springs" href="#"/>
-        <area shape="circle" coords="325, 344, 10" alt="Santa Ana" title="Santa Ana" href="#"/>
-        <area shape="circle" coords="335, 360, 10" alt="Oceanside" title="Oceanside" href="#"/>
-        <area shape="circle" coords="345, 360, 10" alt="Escondido" title="Escondido" href="#"/>
-        <area shape="circle" coords="345, 380, 10" alt="San Diego" title="San Diego" href="#"/>
-    </map>
-    <div class="container" style="position:relative;left:575px;bottom:300px;width:200px;height:250px;font-size:30px;color:black">
-        <div id="SelectedCity"></div><br/>
-        <div id="SelectedCityTemp"></div><br/>
-        <div id="SelectedCitySunny"></div>
-    </div>
-</div>
 
 <script>
     var hoverProperties = {
@@ -232,10 +185,30 @@ Home
                 temperature -= 10
             }
             else sunny = "cloudy";
-            $("#SelectedCityTemp").text(temperature).show();
+            $("#SelectedCityTemp").text(temperature + " °F").show();
             $("#SelectedCitySunny").text(sunny).show();
         }
     });
+
+    function goToLab(person) {
+        switch(person) {
+            case "Kaila":
+                window.location.href = "/kaila/kailaData";
+                break;
+            case "Nolan":
+                window.location.href = "/nolan/minilab";
+                break;
+            case "Adam":
+                window.location.href = "/adam/minilab";
+                break;
+            case "Sophie":
+                window.location.href = "/sophie/bubble";
+                break;
+            case "Ethan":
+                window.location.href = "/ethan2/ethan2Bubble";
+                break;
+        }
+    };
 </script>
 
 </body>

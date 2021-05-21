@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <head>
 
     <title>Weather</title>
@@ -44,7 +44,6 @@
 
         /* ---- wrapper ---- */
         .wrapper {
-            margin-left:250px;
             margin-top:80px;
         }
 
@@ -326,21 +325,21 @@
 
     </style>
 
-<body>
-
-<div align="center">
-    <div class="sidebar">
-        <div class="sidebar-nav">
-            <a href="/"><i class="fas fa-home"></i></a>
-            <a href="/login"><i class="fas fa-sign-in-alt"></i></a>
-            <a href="/weather"><i class="fas fa-city"></i></a>
+    <div align="center">
+        <div class="sidebar">
+            <div class="sidebar-nav">
+                <a href="/"><i class="fas fa-home"></i></a>
+                <a href="/login"><i class="fas fa-sign-in-alt"></i></a>
+                <a href="/weather"><i class="fas fa-city"></i></a>
+            </div>
         </div>
     </div>
-</div>
-
-</body>
 
 </head>
-{% block content %}
-{% endblock %}
+
+<body style="position:absolute;left:200px">
+    {% block content %}
+    {% endblock %}
+</body>
+
 </html>
