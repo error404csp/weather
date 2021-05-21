@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}
+Nolan's Minilab
+{% endblock %}
+{% block content %}
+<style>
+    .bruh {
+        font-size: xx-large;
+        color: blue;
+        margin-bottom: 5px;
+    }
+    body {
+        background-color: black;
+    }
+    label, p {
+        margin: 5px;
+    }
+    .spacey {
+        margin: 3px;
+        font-size: large;
+        color:white;
+    }
+
+    .fib_number {}
+    .fib_series {}
+    .fib_dict {}
+    .fib_list {}
+</style>
+<body>
+<script>
+    var dataGlobal
+    function create_lists(dict) {
+        $(".fib_dict").remove();
+        let listOfDict = Object.keys(dict).length
+        for(i=listOfDict-1;i<=0;i--) {
+            var one_list = "<h5 class='fib_dict'>" + dict[i].toString() + "</h5>"
+            $('#fib_dict').append(one_list);
+        }
+    }
+
+    $(document).ready(function() {
+        $('#fibForm').on('submit', function (event) {
+            $.ajax({
+                data: {
+                    series: $('#series').val()
+                },
+                type: 'POST',
+                url: '/nolan/fibObject'
+            }).done(function (data) {
+                $('.fib_number').text(data.number).show();
+                $('.fib_series').text(data.series).show();
+                $('.fib_list').text(data.list).show();
+                console.log(data);
+                dataGlobal = data;
+                create_lists(data.dict);
+            });
+            event.preventDefault();
+        });
+    });
+</script>
+
+<div class="container">
+
+    <div class="center-block" style="margin: 2% 5% 5%; font-family: gilroy,serif;">
+        <!-- Title -->
+        <div class="col-12" style="text-align: center;">
+            <h1><strong>Fibonacci series in Python</strong></h1>
+        </div>
+
+        <!-- Input and Content -->
+        <div class="jumbotron text-center row">
+            <div class="col-md-6">
+                <h3>Type the nth number in the fibonacci sequence?</h3>
+                <! removed image i don't have>
+                <form id="fibForm">
+                    <input name="series" id="series" type="number" min="2" max="100" >
+                    <button type="submit">Go!</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Fibonacci series for </h3><h3 class="fib_series">n</h3>
+                <!-- Number, List table -->
+                <table class="mx-auto">
+                    <tr>
+                        <th scope="col">Number</th>
+                        <th scope="col">List</th>
+                    </tr>
+                    <tr>
+                        <td class="fib_number"></td>
+                        <td class="fib_list"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sequence -->
+        <div class="col-12" style="text-align: left; ">
+            <!-- Series -->
+        <p>Fibonacci build up for series: </p><p class="fib_series"></p><p> number: </p><p class="fib_number"></p>
+            <div class="overflow-auto" id="fib_dict" style="height: 200px">
+                <! consecutive lists go here <-- get_sequence with for loops>
+            </div>
+            <!-- Code -->
+        <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fnighthawk_csp%2Fblob%2Fmaster%2Falgorithm%2Ffibonacci.py&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
+
+    </div>
+
+</div>
+
+<style>
+    table, td, th {
+        border: 1px solid blue
+    }
+    td, th {
+        text-align:left;
+    }
+</style>
+
+</body>
+{% endblock %}

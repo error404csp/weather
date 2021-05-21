@@ -35,7 +35,9 @@ def minilabs():
     return render_template('minilabs.html')
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5000)
+    app.run(host='localhost', port=25565)
 
 #when pushing, keep app.run(host='127.0.0.1', port=5000)
-#nolan's app.run(host='192.168.1.88', port=25565)
+#school app.run(host='10.8.137.78', port=25565)
+#nolan's app.run(host='192.168.1.14', port=25565)
+#zerotierone app.run(host='192.168.193.211', port=25565)

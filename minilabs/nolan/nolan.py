@@ -72,7 +72,6 @@ def selectionSort(string,dumb):
         #no early return --> returns words
         return stringList
 
-import math
 def bubbleSort(string,dumb):
     #split list by commas or spaces
     listedData = string.replace(" ",",")
@@ -159,3 +158,19 @@ def bruhble():
             return jsonify({'sortedData':sortedList})
         except:
             return jsonify({'error':"Make sure the data is all the same type."})
+
+@nolan_bp.route('/hear', methods=['POST'])
+def hear():
+    if request.method == "POST":
+        whatTheySaid = request.form["dataToSort"]
+        print("")
+        print("client:")
+        print(whatTheySaid)
+        return "bruh"
+
+@nolan_bp.route('/talk', methods=['POST'])
+def talk():
+    if request.method == "POST":
+        print("")
+        minilabTitle = input("server: ")
+        return jsonify({'text':minilabTitle})

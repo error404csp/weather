@@ -11,7 +11,7 @@ Nolan's Minilab
         margin-bottom: 5px;
     }
     body {
-        background-color: #000000;
+        background-color: black;
     }
     label, p {
         margin: 5px;
@@ -19,7 +19,7 @@ Nolan's Minilab
     .spacey {
         margin: 3px;
         font-size: large;
-        color:blue;
+        color:white;
     }
 </style>
 <body>
@@ -42,7 +42,7 @@ Nolan's Minilab
                     $('#statement').hide();
                 } else {
                     $('#statement').text(data.statement).show();
-                    $('#sequence').css("color", "blue");
+                    $('#sequence').css("color", "white");
                     $('#sequence').text(data.sequence).show();
                 }
             });
@@ -63,13 +63,39 @@ Nolan's Minilab
                     $('#sortedData').css("color","red");
                     $('#sortedData').text(data.error).show();
                 } else {
-                    $('#sortedData').css("color","blue");
+                    $('#sortedData').css("color","white");
                     $('#sortedData').html(data.sortedData).show();
                 }
             });
             event.preventDefault();
         });
+
+        //chat technology with server I invented part 1
+        $("#dataToSort").on("keyup", function() {
+            var outdatedText = $('#dataToSort').val();
+            setTimeout(function() {
+                if (outdatedText == $('#dataToSort').val()) {
+                    $.ajax({
+                        data: {dataToSort: $('#dataToSort').val()},
+                        type: 'POST',
+                        url: '/nolan/hear'
+                    });
+                }
+            },600);
+        });
     });
+
+    //chat tech part 2
+    talkInterval = () => {
+        $.ajax({
+            type: 'POST',
+            url: '/nolan/talk'
+        }).done(function(data){
+            $('#minilab2title').text(data.text).show();
+            talkInterval();
+        });
+    };
+    talkInterval();
 </script>
 <div class="bruh">MINILAB 1</div>
 <img src="{{url_for('.static', filename='sequences.png')}}" alt="sequences.png" length="40%" width="40%" id="sequences" style="margin-right:100px;display:inline;float:right"/>
@@ -94,11 +120,11 @@ Nolan's Minilab
 <br>
 <br>
 <br>
-<div class="bruh">MINILAB 2</div>
+<div class="bruh" id="minilab2title">MINILAB 2</div>
 <form id="minilab2" style="border:1px solid #ccc; max-width:50%;">
     <div class="container">
         <label for="dataToSort"><b>Data to Sort:</b></label>
-        <input type="text" placeholder="ex: 1,5,8,3,6,2" id="dataToSort" required><label>**Defaults to select sort</label>
+        <input type="text" oninput="hearInterval" placeholder="ex: 1,5,8,3,6,2" id="dataToSort" required><label>**Defaults to select sort</label>
         <br><p>Enter characters, integers, or strings separated by spaces and/or commas. Including more than one character will sort through the list as words.</p>
         <input type="checkbox" id="chuckeecheese" name="chuckeecheese"><label for="chuckeecheese">Sort each word
         into alphabetical order as well</label>

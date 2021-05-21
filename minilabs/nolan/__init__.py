@@ -8,3 +8,4 @@ nolan_bp = Blueprint(
 )
 
 from minilabs.nolan import nolan
+from minilabs.nolan import testpage
