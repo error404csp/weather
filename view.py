@@ -1,6 +1,17 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 
+class User:
+    def __init__(self, id, username, password):
+        self.id = id
+        self.username = username
+        self.password = password
+
+users = []
+users.append(User(id=1, username='Username', password='Password'))
+
+
 app = Flask(__name__, template_folder="templates")
+app.secret_key = 'iswearifanotheroceanidsummonsawaterbirdiwillripitslungsout'
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 
@@ -31,11 +42,24 @@ def about():
 @app.route('/login', methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-        user = request.form['Username1']
-        passw = request.form['Password1']
-        return render_template('weather.html', Username1=user, Password1=passw)
+        session.pop('user_id', None)
+        session.permanent = True
+        username = request.form['username']
+        password = request.form['password']
+        try:
+            user = [x for x in users if x.username == username][0]
+            if user and user.password == password:
+                session['user_id'] = user.id
+                return render_template('weather.html')
+            else:
+                return render_template('login.html')
+        except:
+            return redirect(url_for('login'))
     else:
-        return render_template('login.html')
+        if 'user' in session:
+            return redirect(url_for('weather'))
+    return render_template('login.html', insession = False)
+
 
 @app.route('/weather')
 def weather():
