@@ -24,3 +24,11 @@ Our weather app allows users to check out live updates of weather from cities ac
 - displaying various cities' current weather and climate data
 - saving cities on a "tracking" list
 - search option for any city
+
+## Progress
+#### [Main Scrum Board](https://github.com/error404csp/weather/projects/1)
+### Current WIPs
+#### [Kaila progress](https://github.com/error404csp/weather/issues/6)
+#### [Adam progress](https://github.com/error404csp/weather/issues/9)
+#### [Nolan progress](https://github.com/error404csp/weather/issues/7)
+#### [Sophie progress](https://github.com/error404csp/weather/issues/8)
