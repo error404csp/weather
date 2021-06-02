@@ -16,14 +16,13 @@ Login Page
     }
 </style>
 
-<!--<div class="container">-->
-<!--   -->
-<!--            <div class="col-md-6">-->
-<!--                <h3>{{data}}</h3>-->
-<!--            </div>-->
-<!--        </div>-->
+<div class="container">
+   Logged in as:
+            <div class="col-md-6">
+                <h3>{{session}}</h3>
+            </div>
+        </div>
 
-<!--    </div>-->
 
 
 
@@ -59,6 +58,7 @@ Login Page
                                     placeholder="Enter Password"
                                     >
                             <p><button type="submit" class = "btn btn-primary" >Confirm</button>
+
                         </form>
 
                     </div>
@@ -87,19 +87,19 @@ Login Page
                     <div class="card-content">
 
                         <p>Username</p>
-                        <form action="/User" method="POST" >
+                        <form action="/signup" method="POST" >
                             <input
                                     id="Username2"
-                                    name="Username2"
+                                    name="username2"
                                     placeholder="Enter Username"
                             >
                         <p>Password</p>
                             <input
                                     id="Password2"
-                                    name="Password2"
+                                    name="password2"
                                     placeholder="Enter Password"
                             >
-                            <p></p><button class = "button button1" formaction = "/User/login">Confirm</button>
+                            <p></p><button class = "button button1" >Confirm</button>
                         </form>
 
                     </div>
