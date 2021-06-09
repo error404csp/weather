@@ -1,19 +1,11 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from os import path
-from flask_login import UserMixin
+from flask_login import UserMixin, login_user, LoginManager
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
-# class User:
-#     def __init__(self, id, username, password):
-#         self.id = id
-#         self.username = username
-#         self.password = password
-#
-# users = []
-# users.append(User(id=1, username='Username', password='Password'))
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True)
@@ -31,7 +23,9 @@ app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 db.init_app(app)
 
-
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
 
 from minilabs.adam import adam_bp
 #from User import User
@@ -63,26 +57,23 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/login', methods=["POST", "GET"])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        session.pop('user_id', None)
-        session.permanent = True
-        username = request.form['username']
-        password = request.form['password']
-        # try:
-        #     user = [x for x in users if x.username == username][0]
-        #     if user and user.password == password:
-        #         session['user_id'] = user.id
-        #         return render_template('weather.html')
-        #     else:
-        #         return render_template('login.html')
-        # except:
-        #     return redirect(url_for('login'))
-    else:
-        if 'user' in session:
-            return redirect(url_for('weather'))
-    return render_template('login.html', insession = False)
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(username=username).first()
+        if user:
+            if user.password == password:
+                flash('Logged in successfully!', category='success')
+                login_user(user, remember=True)
+                return render_template("login.html")
+            else:
+                flash('Incorrect Password', category='error')
+        else:
+            flash('Username does not exist.', category='error')
+    return render_template("login.html")
 
 @app.route('/signup', methods=["POST", "GET"])
 def signup():
@@ -93,14 +84,15 @@ def signup():
 
         user = User.query.filter_by(username=username).first()
         if user:
-            flash('Username Already Exists!')
+            flash('Username Already Exists!', category='error')
             return render_template("login.html")
         else:
             new_user = User(username=username, password=password)
             db.session.add(new_user)
             db.session.commit()
-            flash('Account Created!')
-    return render_template("home.html")
+            flash('Account Created!', category='success')
+    return render_template("login.html")
+
 
 @app.route('/weather')
 def weather():
@@ -110,10 +102,9 @@ def weather():
 def minilabs():
     return render_template('minilabs.html')
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
 if __name__ == "__main__":
     app.run(host='localhost', port=25565)
-
-#when pushing, keep app.run(host='127.0.0.1', port=5000)
-#school app.run(host='10.8.137.78', port=25565)
-#nolan's app.run(host='192.168.1.14', port=25565)
-#zerotierone app.run(host='192.168.193.211', port=25565)
