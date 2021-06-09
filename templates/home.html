@@ -108,30 +108,30 @@ Home
         <div class="card-content" style="margin-top:0px;position:relative;bottom:20px">
             <img id="CaliMap" alt="California Map" src="../static/CaliMap.PNG" usemap="#California"/>
             <map name="California">
-                <area shape="circle" coords="135,70,10" alt="Eureka" title="Eureka" href="#"/>
-                <area shape="circle" coords="185,80,10" alt="Redding" title="Redding" href="#"/>
-                <area shape="circle" coords="200,115,10" alt="Chico" title="Chico" href="#"/>
-                <area shape="circle" coords="210, 160, 10" alt="Sacramento" title="Sacramento" href="#"/>
-                <area shape="circle" coords="170, 165, 10" alt="Santa Rosa" title="Santa Rosa" href="#"/>
-                <area shape="circle" coords="185, 185, 10" alt="Oakland" title="Oakland" href="#"/>
-                <area shape="circle" coords="175, 185, 10" alt="San Francisco" title="San Francisco" href="#"/>
-                <area shape="circle" coords="195, 200, 10" alt="San Jose" title="San Jose" href="#"/>
-                <area shape="circle" coords="200, 225, 10" alt="Salinas" title="Salinas" href="#"/>
-                <area shape="circle" coords="260, 230, 10" alt="Fresno" title="Fresno" href="#"/>
-                <area shape="circle" coords="193, 230, 10" alt="Monterey" title="Monterey" href="#"/>
-                <area shape="circle" coords="230, 280, 10" alt="San Luis Obispo" title="San Luis Obispo" href="#"/>
-                <area shape="circle" coords="283, 283, 10" alt="Bakersfield" title="Bakersfield" href="#"/>
-                <area shape="circle" coords="233, 295, 10" alt="Santa Maria" title="Santa Maria" href="#"/>
-                <area shape="circle" coords="260, 315, 10" alt="Santa Barbara" title="Santa Barbara" href="#"/>
-                <area shape="circle" coords="335, 320, 10" alt="San Bernadino" title="San Bernadino" href="#"/>
-                <area shape="circle" coords="305, 330, 10" alt="Los Angeles" title="Los Angeles" href="#"/>
-                <area shape="circle" coords="322, 335, 10" alt="Anaheim" title="Anaheim" href="#"/>
-                <area shape="circle" coords="310, 340, 10" alt="Long Beach" title="Long Beach" href="#"/>
-                <area shape="circle" coords="362, 340, 10" alt="Palm Springs" title="Palm Springs" href="#"/>
-                <area shape="circle" coords="325, 344, 10" alt="Santa Ana" title="Santa Ana" href="#"/>
-                <area shape="circle" coords="335, 360, 10" alt="Oceanside" title="Oceanside" href="#"/>
-                <area shape="circle" coords="345, 360, 10" alt="Escondido" title="Escondido" href="#"/>
-                <area shape="circle" coords="345, 380, 10" alt="San Diego" title="San Diego" href="#"/>
+                <area shape="circle" coords="135,70,10" alt="5563397" title="Eureka" href="#"/>
+                <area shape="circle" coords="185,80,10" alt="5570160" title="Redding" href="#"/>
+                <area shape="circle" coords="200,115,10" alt="5336269" title="Chico" href="#"/>
+                <area shape="circle" coords="210, 160, 10" alt="5389489" title="Sacramento" href="#"/>
+                <area shape="circle" coords="170, 165, 10" alt="5393287" title="Santa Rosa" href="#"/>
+                <area shape="circle" coords="185, 185, 10" alt="5378538" title="Oakland" href="#"/>
+                <area shape="circle" coords="175, 185, 10" alt="5391959" title="San Francisco" href="#"/>
+                <area shape="circle" coords="195, 200, 10" alt="5392171" title="San Jose" href="#"/>
+                <area shape="circle" coords="200, 225, 10" alt="5391295" title="Salinas" href="#"/>
+                <area shape="circle" coords="260, 230, 10" alt="5350937" title="Fresno" href="#"/>
+                <area shape="circle" coords="193, 230, 10" alt="5374361" title="Monterey" href="#"/>
+                <area shape="circle" coords="230, 280, 10" alt="5392323" title="San Luis Obispo" href="#"/>
+                <area shape="circle" coords="283, 283, 10" alt="5325738" title="Bakersfield" href="#"/>
+                <area shape="circle" coords="233, 295, 10" alt="5393180" title="Santa Maria" href="#"/>
+                <area shape="circle" coords="260, 315, 10" alt="5392952" title="Santa Barbara" href="#"/>
+                <area shape="circle" coords="335, 320, 10" alt="5391710" title="San Bernadino" href="#"/>
+                <area shape="circle" coords="305, 330, 10" alt="5368381" title="Los Angeles" href="#"/>
+                <area shape="circle" coords="322, 335, 10" alt="12213683" title="Anaheim" href="#"/>
+                <area shape="circle" coords="310, 340, 10" alt="5367929" title="Long Beach" href="#"/>
+                <area shape="circle" coords="362, 340, 10" alt="5380668" title="Palm Springs" href="#"/>
+                <area shape="circle" coords="325, 344, 10" alt="5392900" title="Santa Ana" href="#"/>
+                <area shape="circle" coords="335, 360, 10" alt="5378771" title="Oceanside" href="#"/>
+                <area shape="circle" coords="345, 360, 10" alt="5346827" title="Escondido" href="#"/>
+                <area shape="circle" coords="345, 380, 10" alt="5391832" title="San Diego" href="#"/>
             </map>
         </div>
     </div>
@@ -152,6 +152,11 @@ Home
 <script src="{{url_for('static', filename='imageMapster.js')}}"></script>
 
 <script>
+    var lastClickedCity;
+    function clickCity() {
+        lastClickedCity=$(this).alt;
+    };
+
     var hoverProperties = {
         fill : true,
         fillOpacity : 0.3,
@@ -174,17 +179,22 @@ Home
             $(this).mapster('set',false);
         },
         onClick: function() {
-            $("#SelectedCity").text($(this).mapster('highlight')[0].alt).show();
-            temperature = Math.round((Math.random()*70+120)/2 + Math.random()*10 - Math.random()*10)
-            sunny = Math.random()
-            if (sunny > 0.7 || temperature > 80) sunny = "sunny";
-            else if (sunny < 0.1) {
-                sunny = "rainy";
-                temperature -= 10
-            }
-            else sunny = "cloudy";
-            $("#SelectedCityTemp").text(temperature + " °F").show();
-            $("#SelectedCitySunny").text(sunny).show();
+            var thisCity = $(this).mapster('highlight')[0]
+            $.ajax({
+                type : 'POST',
+                contentType: 'application/json',
+                url : '/weatherAPI',
+                data: JSON.stringify(thisCity.alt),
+            }).done(function(data) {
+                console.log(data)
+                data = JSON.parse(data)
+                temperatureKelvin = parseInt(data.list[0].main.temp)
+                temperature = Math.round((temperatureKelvin - 273.15) * 9/5 + 32)
+                weather = data.list[0].weather[0].description
+                $("#SelectedCity").text(thisCity.title).show();
+                $("#SelectedCityTemp").text(temperature + " °F").show();
+                $("#SelectedCitySunny").text(weather).show();
+            });
         }
     });
 

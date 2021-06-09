@@ -1,4 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
+import requests, json
 
 app = Flask(__name__, template_folder="templates")
 app.config['ENV'] = 'development'
@@ -45,10 +46,19 @@ def weather():
 def minilabs():
     return render_template('minilabs.html')
 
+#weather API
+@app.route('/weatherAPI', methods=['POST'])
+def weatherAPI():
+    weatherAPI = "api.openweathermap.org/data/2.5/forecast"
+    cityId = request.get_json()
+    apiKey = "6eb40bfe1bcc41e01f9b695559dcd244"
+    link = "http://" + weatherAPI + "?id=" + cityId + "&appid=" + apiKey
+    weatherData = requests.get(link)
+    print(weatherData.text)
+    return weatherData.text
+
 if __name__ == "__main__":
-    app.run(host='localhost', port=25565)
+    app.run(host='localhost', port=8080)
 
 #when pushing, keep app.run(host='127.0.0.1', port=5000)
-#school app.run(host='10.8.137.78', port=25565)
 #nolan's app.run(host='192.168.1.14', port=25565)
-#zerotierone app.run(host='192.168.193.211', port=25565)
