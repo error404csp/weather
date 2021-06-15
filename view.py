@@ -50,12 +50,8 @@ def about():
 def login():
     if request.method == "POST":
         username = request.form.get("username1")
-        print("username:" + username)
         password = request.form.get("password1")
-        print("password" + password)
-
         user = User.query.filter_by(username=username).first()
-        print(user)
         if user:
             if user.password == password:
                 flash('Logged in successfully!', category='success')
@@ -72,12 +68,10 @@ def signup():
     username = request.form.get("username2")
     password = request.form.get("password2")
     user = User.query.filter_by(username=username).first()
-    #print(user.username + " " + user.password)
     if user:
         flash('Username Already Exists!', category='error')
     else:
         new_user = User(username=username,password=password)
-        #print(new_user.username + " " + new_user.password)
         db.session.add(new_user)
         db.session.commit()
         flash('Account Created!', category='success')
@@ -103,11 +97,11 @@ def weatherAPI():
     apiKey = "6eb40bfe1bcc41e01f9b695559dcd244"
     link = "http://" + weatherAPI + "?id=" + cityId + "&appid=" + apiKey
     weatherData = requests.get(link)
-    print(weatherData.text)
+    #print(weatherData.text)
     return weatherData.text
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=8080)
+    app.run(host='localhost', port=25565)
 
 #when pushing, keep app.run(host='127.0.0.1', port=5000)
 #nolan's app.run(host='192.168.1.14', port=25565)
