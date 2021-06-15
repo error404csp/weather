@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request, session, flash
+from flask import Blueprint, Flask, redirect, url_for, render_template, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
 import requests, json
 from flask_login import UserMixin, login_user, LoginManager
@@ -9,7 +9,7 @@ app.config['ENV'] = 'development'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG'] = True
 app.secret_key = 'super secret key'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 from minilabs.adam import adam_bp
 #from User import User
